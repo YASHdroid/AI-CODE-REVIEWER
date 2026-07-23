@@ -48,9 +48,6 @@ if (!isMatch) {
         message: "Invalid Password"
     });
 }
-return res.status(200).json({
-    message: "Login Successful"
-});
 const token = jwt.sign(
     {
         id: user._id,
@@ -60,10 +57,18 @@ const token = jwt.sign(
     {
         expiresIn: "1d"
     }
+
+   
 );
+
+ return res.status(200).json({
+    message: "Login Successful", token
+});
+
+
     
 }
 
 module.exports = {
-    signup
+    signup , login
 };
